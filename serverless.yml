@@ -10,11 +10,25 @@ provider:
   runtime: nodejs12.x
   memorySize: 256
   stage: ${opt:stage, 'dev'}
-  
+    # setting an .ENV for createTodos and more to use table name in custom
+environment:
+  TODOS_TABLE_NAME: ${self:custom.TodosTable.name}
+iamRoleStatements:
+  - ${file(iam/TodosTableIAM.yml):TodosTableIAM}
+
+resources:
+  Resources:
+    TodosTable: ${file(resources/TodosTable.yml):TodosTable}
+
 functions:
   hello:
-    handler: src/handlers/hello.handler
+    handler: src/handlers/addItem.handler
     events:
       - http:
           method: GET
-          path: /hello
+          path: /add
+
+custom:
+  TodosTable:
+    name: !Ref TodosTable
+    arn: !GetAtt TodosTable.Arn
