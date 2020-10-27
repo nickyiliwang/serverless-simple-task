@@ -7,9 +7,10 @@ TodosTableIAM:
     - dynamodb:GetItem
     - dynamodb:UpdateItem
     - dynamodb:Query
+    - dynamodb:BatchGet
   Resource:
     - ${self:custom.TodosTable.arn}
     - !Join [
         "/",
-        ["${self:custom.TodosTable.arn}", "index", "statusAndEndDate"],
+        ["${self:custom.TodosTable.arn}", "index", "status"],
       ]
