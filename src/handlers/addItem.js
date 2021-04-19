@@ -18,7 +18,7 @@ async function addItem(event, context) {
   try {
     await dynamodb
       .put({
-        TableName: process.env.TODOS_TABLE_NAME,
+        TableName: process.env.VIDEOS_TABLE_NAME,
         Item: video,
       })
       .promise();

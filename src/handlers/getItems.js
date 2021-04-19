@@ -8,7 +8,7 @@ async function getItems(event, context) {
   const { status } = event.queryStringParameters;
 
   const params = {
-    TableName: process.env.TODOS_TABLE_NAME,
+    TableName: process.env.VIDEOS_TABLE_NAME,
     IndexName: "status",
     KeyConditionExpression: "#status = :status",
     ExpressionAttributeValues: {

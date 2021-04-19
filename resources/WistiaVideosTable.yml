@@ -1,0 +1,16 @@
+
+WistiaVideosTable:
+  Type: AWS::DynamoDB::Table
+  Properties:
+    TableName: WistiaVideosTable01
+    BillingMode: PAY_PER_REQUEST
+    AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: S
+      - AttributeName: status
+        AttributeType: S
+    KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+      - AttributeName: status
+        KeyType: RANGE

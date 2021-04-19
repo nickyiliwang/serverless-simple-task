@@ -1,0 +1,7 @@
+WistiaVideosTableIAM:
+  Effect: Allow
+  Action:
+    - dynamodb:PutItem
+    - dynamodb:Query
+  Resource:
+    - ${self:custom.WistiaVideosTable.arn}
